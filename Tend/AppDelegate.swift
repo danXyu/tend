@@ -36,6 +36,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return true
   }
 
+  func application(application: UIApplication,
+    openURL url: NSURL,
+    sourceApplication: String?,
+    annotation: AnyObject?) -> Bool {
+      return FBSDKApplicationDelegate.sharedInstance().application(application,
+        openURL: url,
+        sourceApplication: sourceApplication,
+        annotation: annotation)
+  }
+  
+  //Make sure it isn't already declared in the app delegate (possible redefinition of func error)
+  func applicationDidBecomeActive(application: UIApplication) {
+    FBSDKAppEvents.activateApp()
+  }
+  
   func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
     UIApplication.sharedApplication().registerForRemoteNotifications()
   }
@@ -67,8 +82,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func applicationDidEnterBackground(application: UIApplication) {}
 
   func applicationWillEnterForeground(application: UIApplication) {}
-
-  func applicationDidBecomeActive(application: UIApplication) {}
 
   func applicationWillTerminate(application: UIApplication) {}
 
