@@ -22,10 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Parse.setApplicationId(parseAppId, clientKey: parseAppSecret)
     PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
     
-//    if PFUser.currentUser() == nil || !(PFUser.currentUser()!).isAuthenticated() {
-//      var redirectLogin = mainBoard.instantiateViewControllerWithIdentifier("LoginVC") as! LoginViewController
-//      window!.rootViewController = redirectLogin
-//    }
+    if PFUser.currentUser() == nil || !(PFUser.currentUser()!).isAuthenticated() {
+      var redirectLogin = mainBoard.instantiateViewControllerWithIdentifier("LoginVC") as! LoginViewController
+      window!.rootViewController = redirectLogin
+    }
     
     if UIApplication.sharedApplication().respondsToSelector("registerUserNotificationSettings:") {
       let notificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
@@ -44,22 +44,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     println(error.localizedDescription)
   }
   
-  func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-    let currentInstallation = PFInstallation.currentInstallation()
-    currentInstallation.setDeviceTokenFromData(deviceToken)
-    currentInstallation.saveInBackgroundWithBlock(nil)
-  }
+//  func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+//    let currentInstallation = PFInstallation.currentInstallation()
+//    currentInstallation.setDeviceTokenFromData(deviceToken)
+//    currentInstallation.saveInBackgroundWithBlock(nil)
+//  }
   
   func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
     //AudioServicesPlayAlertSound(1110)
     
     NSNotificationCenter.defaultCenter().postNotificationName("displayMessage", object: userInfo)
     NSNotificationCenter.defaultCenter().postNotificationName("reloadMessages", object: nil)
-  }
-  
-  
-  func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-    return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication, withSession: FBSession.activeSession())
   }
   
   //    var gameScore = PFObject(className: "GameScore")
@@ -73,9 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func applicationWillEnterForeground(application: UIApplication) {}
 
-  func applicationDidBecomeActive(application: UIApplication) {
-    FBAppCall.handleDidBecomeActiveWithSession(FBSession.activeSession())
-  }
+  func applicationDidBecomeActive(application: UIApplication) {}
 
   func applicationWillTerminate(application: UIApplication) {}
 

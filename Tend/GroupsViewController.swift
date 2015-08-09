@@ -7,14 +7,15 @@
 //  Copyright (c) 2015 Corner Innovations. All rights reserved.
 //
 
+
 import Foundation
 import UIKit
 import Parse
 import ParseFacebookUtilsV4
 
 
-/* View Controller: DashboardViewController
- * ----------------------------------------
+/* View Controller: GroupsViewController
+ * -------------------------------------
  *
  */
 class GroupsViewController: UIViewController {

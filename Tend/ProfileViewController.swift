@@ -16,166 +16,102 @@ import UIKit
  * --------------------------------------
  *
  */
-class ProfileViewController : UITableViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ProfileViewController : UITableViewController, UITextFieldDelegate {
+  
+  @IBOutlet var profileImageView  : UIImageView!
+  @IBOutlet var editBgButton      : UIButton!
+  @IBOutlet var editAvatarButton  : UIButton!
   
   @IBOutlet var bgImageView : UIImageView!
-  @IBOutlet var profileImageView : UIImageView!
-  
   @IBOutlet var profileContainer : UIView!
   @IBOutlet var doneButton : UIButton!
   
   @IBOutlet var nameLabel : UILabel!
+  @IBOutlet var nameTextField : UITextField!
   @IBOutlet var locationLabel : UILabel!
-  @IBOutlet var locationImageView : UIImageView!
+  @IBOutlet var locationTextField : UITextField!
+  @IBOutlet var emailLabel : UILabel!
+  @IBOutlet var emailTextField : UITextField!
+  @IBOutlet var passwordLabel : UILabel!
+  @IBOutlet var passwordTextField : UITextField!
   
-  @IBOutlet var followersLabel : UILabel!
-  @IBOutlet var followersCount : UILabel!
-  @IBOutlet var followingLabel : UILabel!
-  @IBOutlet var followingCount : UILabel!
-  @IBOutlet var photosLabel : UILabel!
-  @IBOutlet var photosCount : UILabel!
-  
-  @IBOutlet var checkinsLabel : UILabel!
-  @IBOutlet var friendsLabel : UILabel!
-  
-  @IBOutlet var photosContainer : UIView!
-  @IBOutlet var photosCollectionLabel : UILabel!
-  @IBOutlet var photosCollectionView : UICollectionView!
-  @IBOutlet var photosLayout : UICollectionViewFlowLayout!
-  
-  var photos : [String]!
-  
-  @IBOutlet var friendsCollectionLabel : UILabel!
-  @IBOutlet var friendsCollectionView : UICollectionView!
-  @IBOutlet var friendsLayout : UICollectionViewFlowLayout!
-  
-  var friends : [String]!
+  @IBOutlet var pushLabel : UILabel!
+  @IBOutlet var pushSwitch : UISwitch!
+  @IBOutlet var facebookLabel : UILabel!
+  @IBOutlet var facebookImageView : UIImageView!
+  @IBOutlet var facebookButton : UIButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    tableView.separatorColor = UIColor(white: 0.92, alpha: 1.0)
+    
     bgImageView.image = UIImage(named: "profile-bg")
-    profileImageView.image = UIImage(named: "profile-pic-1")
+    profileImageView.image = UIImage(named: "profile-pic-2")
     profileImageView.layer.cornerRadius = 30
     profileImageView.clipsToBounds = true
     
-    nameLabel.textColor = UIColor.whiteColor()
-    nameLabel.text = "John Hoylett"
+    themeButtonWithText(editAvatarButton, text: "EDIT AVATAR")
+    themeButtonWithText(editBgButton, text: "EDIT BACKGROUND")
     
-    locationLabel.textColor = UIColor.whiteColor()
-    locationLabel.text = "London, UK"
+    themeLabelWithText(nameLabel, text: "NAME")
+    themeTextFieldWithText(nameTextField, text: "Rachel Christofsson")
     
-    locationImageView.image = UIImage(named: "location")
+    themeLabelWithText(locationLabel, text: "LOCATION")
+    themeTextFieldWithText(locationTextField, text: "London, UK")
     
-    let statsCountFontSize : CGFloat = 16
-    let statsLabelFontSize : CGFloat = 12
-    let statsCountColor = UIColor.whiteColor()
-    let statsLabelColor = UIColor(white: 0.7, alpha: 1.0)
+    themeLabelWithText(emailLabel, text: "EMAIL")
+    themeTextFieldWithText(emailTextField, text: "rachel@mail.com")
     
-    followingCount.textColor = statsCountColor
-    followingCount.text = "35"
+    themeLabelWithText(passwordLabel, text: "PASSWORD")
+    themeTextFieldWithText(passwordTextField, text: "qowqoqooq")
+    passwordTextField.secureTextEntry = true
     
-    followingLabel.textColor = statsLabelColor
-    followingLabel.text = "FOLLOWING"
+    themeLabelWithText(pushLabel, text: "PUSH NOTIFICATIONS")
+    themeLabelWithText(facebookLabel, text: "LOGGED IN WITH FACEBOOK")
     
-    followersCount.textColor = statsCountColor
-    followersCount.text = "2200"
+    themeButtonWithText(facebookButton, text: "LOGOUT")
+    facebookButton.tintColor = UIColor(red: 0.19, green: 0.38, blue: 0.73, alpha: 1.0)
     
-    followersLabel.textColor = statsLabelColor
-    followersLabel.text = "FOLLOWERS"
-    
-    photosCount.textColor = statsCountColor
-    photosCount.text = "45"
-    
-    photosLabel.textColor = statsLabelColor
-    photosLabel.text = "PHOTOS"
-    
-    checkinsLabel.textColor = UIColor.blackColor()
-    checkinsLabel.text = "22 Check-ins"
-    
-    friendsLabel.textColor = UIColor.blackColor()
-    friendsLabel.text = "18 Common Friends"
-    
-    addBlurView()
-    
-    photosCollectionLabel.textColor = UIColor.blackColor()
-    photosCollectionLabel.text = "PHOTOS (31)"
-    
-    photosContainer.backgroundColor = UIColor(white: 0.92, alpha: 1.0)
-    
-    photosCollectionView.delegate = self
-    photosCollectionView.dataSource = self
-    photosCollectionView.backgroundColor = UIColor.clearColor()
-    
-    photosLayout.itemSize = CGSizeMake(90, 90)
-    photosLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
-    photosLayout.minimumInteritemSpacing = 5
-    photosLayout.minimumLineSpacing = 10
-    photosLayout.scrollDirection = .Horizontal
-    
-    photos = ["photos-1", "photos-2", "photos-3", "photos-4", "photos-5", "photos-6", "photos-7", "photos-8", "photos-9"]
-    
-    friendsCollectionLabel.textColor = UIColor.blackColor()
-    friendsCollectionLabel.text = "FRIENDS (22)"
-    
-    friendsCollectionView.delegate = self
-    friendsCollectionView.dataSource = self
-    friendsCollectionView.backgroundColor = UIColor.clearColor()
-    
-    friendsLayout.itemSize = CGSizeMake(45, 45)
-    friendsLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
-    friendsLayout.minimumInteritemSpacing = 5
-    friendsLayout.minimumLineSpacing = 10
-    friendsLayout.scrollDirection = .Horizontal
-    
-    friends = ["friends-1", "friends-2", "friends-3", "friends-4", "friends-5", "friends-6"]
+    facebookImageView.image = UIImage(named: "fb")
     
     let doneImage = UIImage(named: "menu")?.imageWithRenderingMode(.AlwaysTemplate)
     doneButton.setImage(doneImage, forState: .Normal)
     doneButton.tintColor = UIColor.whiteColor()
     
+    addBlurView()
   }
   
   override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     
     if indexPath.row == 0{
-      return 250
-    }else if indexPath.row == 3 {
-      return 400
-    }else if indexPath.row == 4 {
-      return 100
+      return 150
+    }else if indexPath.row == 5{
+      return 15
     }else{
       return 44
     }
   }
   
-  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+  
+  func themeButtonWithText(button: UIButton, text:String){
+    let background = UIImage(named: "border-button")?.resizableImageWithCapInsets(UIEdgeInsetsMake(10, 10, 10, 10))
+    let backgroundTemplate = background!.imageWithRenderingMode(.AlwaysTemplate)
     
-    if collectionView == photosCollectionView {
-      let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! UICollectionViewCell
-      
-      let imageView = cell.viewWithTag(1) as! UIImageView
-      let photo = photos[indexPath.row]
-      imageView.image = UIImage(named: photo)
-      return cell
-    }else{
-      
-      let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! UICollectionViewCell
-      
-      let imageView = cell.viewWithTag(1) as! UIImageView
-      let friend = friends[indexPath.row]
-      imageView.image = UIImage(named: friend)
-      imageView.layer.cornerRadius = 20
-      return cell
-    }
+    button.setBackgroundImage(backgroundTemplate, forState: .Normal)
+    button.setTitle(text, forState: .Normal)
+    button.tintColor = UIColor.whiteColor()
   }
   
-  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    if collectionView == photosCollectionView {
-      return photos.count
-    }else{
-      return friends.count
-    }
+  func themeTextFieldWithText(textField:UITextField, text: String){
+    let largeFontSize : CGFloat = 17
+    textField.text = text
+    textField.delegate = self
+  }
+  
+  func themeLabelWithText(label: UILabel, text: String){
+    let fontSize : CGFloat = 10
+    label.text = text
   }
   
   func addBlurView(){
@@ -197,11 +133,74 @@ class ProfileViewController : UITableViewController, UICollectionViewDataSource,
     self.profileContainer.addConstraints([topConstraint, rightConstraint, leftConstraint, bottomConstraint])
   }
   
+  @IBAction func doneTapped(sender: AnyObject?){
+    dismissViewControllerAnimated(true, completion: nil)
+  }
+  
   override func preferredStatusBarStyle() -> UIStatusBarStyle {
     return .LightContent
   }
   
-  @IBAction func doneTapped(sender: AnyObject?){
-    dismissViewControllerAnimated(true, completion: nil)
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    self.registerForKeyboardNotifications()
+  }
+  
+  override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+    self.deregisterFromKeyboardNotifications()
+  }
+  
+  func registerForKeyboardNotifications ()-> Void   {
+    
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
+    
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillBeHidden:", name: UIKeyboardWillHideNotification, object: nil)
+  }
+  
+  func deregisterFromKeyboardNotifications () -> Void {
+    let center:  NSNotificationCenter = NSNotificationCenter.defaultCenter()
+    center.removeObserver(self, name: UIKeyboardDidHideNotification, object: nil)
+    center.removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+  }
+  
+  func keyboardWasShown(notification: NSNotification) {
+    
+    let info : NSDictionary = notification.userInfo!
+    let keyboardSize = info.objectForKey(UIKeyboardFrameBeginUserInfoKey)?.CGRectValue().size
+    let insets: UIEdgeInsets = UIEdgeInsetsMake(self.tableView.contentInset.top, 0, keyboardSize!.height, 0)
+    
+    self.tableView.contentInset = insets
+    self.tableView.scrollIndicatorInsets = insets
+    
+    self.tableView.contentOffset = CGPointMake(self.tableView.contentOffset.x, self.tableView.contentOffset.y + keyboardSize!.height)
+  }
+  
+  func keyboardWillBeHidden (notification: NSNotification) {
+    
+    let info : NSDictionary = notification.userInfo!
+    let keyboardSize = info.objectForKey(UIKeyboardFrameBeginUserInfoKey)?.CGRectValue().size
+    let insets: UIEdgeInsets = UIEdgeInsetsMake(self.tableView.contentInset.top, 0, keyboardSize!.height, 0)
+    
+    self.tableView.contentInset = insets
+    self.tableView.scrollIndicatorInsets = insets
+  }
+  
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    
+    return true;
+  }
+  
+  override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    
+    cell.separatorInset = UIEdgeInsetsZero
+    cell.layoutMargins = UIEdgeInsetsZero
+    cell.selectionStyle = .None
+  }
+  
+  override func viewDidLayoutSubviews() {
+    tableView.separatorInset = UIEdgeInsetsZero
+    tableView.layoutMargins = UIEdgeInsetsZero
   }
 }

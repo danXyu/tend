@@ -31,7 +31,7 @@ let iOS7 = iosVersion >= 7 && iosVersion < 8
 
 // Current User Settings
 let userPF = PFUser()
-var currentUser: PFUser = PFUser.currentUser()!
+var currentUser = PFUser.currentUser()!
 var hasSignedUp = false
 
 /* Helper Function: scaleImage(image, newSize) */
