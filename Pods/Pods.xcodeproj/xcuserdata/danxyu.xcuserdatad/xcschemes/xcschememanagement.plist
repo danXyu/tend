@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FSCalendar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Facebook-iOS-SDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,47 +57,52 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0A2594F44BD63EA9AD39C0F35F2836C6</key>
+		<key>1EF3AA08D81B78763E9983B8EDB8A370</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>137E829DF1C58B9E0F0CB614F9929B86</key>
+		<key>1F7084DB9A874FFF2F255B1BE94D4DB5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2355F755EB04297E6D4E4657CB9B9B51</key>
+		<key>39B0040E0A8D32D7FD75A10EE4EDDC00</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>38B19B7E219809AE8C86869F8EA8F900</key>
+		<key>415DCBC05E4607119148B991312DDD87</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5751E1C61F9D8D79B3AC39F239E1736B</key>
+		<key>4D45003E5A6B880DD6DFCBBCC342A30A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>99245843921CA3797F3E88DF33BC1C68</key>
+		<key>5C183DBEB0D4A2EF73278AC215B84A36</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9A6144EEDC9F122B208F46FB9FFBF716</key>
+		<key>CD9198F83C2F8096FB9C4C8878141D83</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BE498E76DEFD24379BAF36D7421AC6CE</key>
+		<key>EB963340BFD274B38A19B0A21BD6A72A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F1A276EA1D65A7C143F6540C91582079</key>
+		<key>EF592949DE0C54BFB399F6CC77BBB3A5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE96BB0B04EA6FEAEF4053DB960E0524</key>
 		<dict>
 			<key>primary</key>
 			<true/>

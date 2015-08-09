@@ -20,6 +20,7 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.4.0):
     - FBSDKCoreKit
+  - FSCalendar (0.9.2)
   - MBProgressHUD (0.9.1)
   - Parse (1.7.5.3):
     - Bolts/Tasks (>= 1.2.0)
@@ -34,6 +35,7 @@ DEPENDENCIES:
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
+  - FSCalendar
   - MBProgressHUD
   - Parse
   - ParseFacebookUtilsV4
@@ -44,6 +46,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 75bdd75c980e811db218488d99dd93b7740f4474
   FBSDKLoginKit: 02a9254a4c132412fa03577b0d53e936d068a7fb
   FBSDKShareKit: a42865f20ba2d1cc548c4d0f73ad22cff6377ddb
+  FSCalendar: 6f8ad93d2999a225cd1e2e1024bfaeeea8ca6c4d
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Parse: 373adbb1ad2e34d383542c3b28f678c49ebe4881
   ParseFacebookUtilsV4: ea5db22e87b91cbf99b9d156642e2b97a4db7d51
