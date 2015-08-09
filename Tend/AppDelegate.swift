@@ -18,11 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    
+
     Parse.setApplicationId(parseAppId, clientKey: parseAppSecret)
     PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
     
-    if PFUser.currentUser() == nil || !(PFUser.currentUser()!).isAuthenticated() {
+    if PFUser.currentUser() == nil || !PFUser.currentUser()!.isAuthenticated() {
       var redirectLogin = mainBoard.instantiateViewControllerWithIdentifier("LoginVC") as! LoginViewController
       window!.rootViewController = redirectLogin
     }
