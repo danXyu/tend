@@ -50,9 +50,9 @@ class ProfileViewController : UITableViewController, UITextFieldDelegate {
     profileImageView.image = UIImage(named: "profile-pic-2")
     profileImageView.layer.cornerRadius = 30
     profileImageView.clipsToBounds = true
-    
-    themeButtonWithText(editAvatarButton, text: "EDIT AVATAR")
-    themeButtonWithText(editBgButton, text: "EDIT BACKGROUND")
+//    
+//    themeButtonWithText(editAvatarButton, text: "EDIT AVATAR")
+//    themeButtonWithText(editBgButton, text: "EDIT BACKGROUND")
     
     themeLabelWithText(nameLabel, text: "NAME")
     themeTextFieldWithText(nameTextField, text: "Rachel Christofsson")
@@ -70,7 +70,7 @@ class ProfileViewController : UITableViewController, UITextFieldDelegate {
     themeLabelWithText(pushLabel, text: "PUSH NOTIFICATIONS")
     themeLabelWithText(facebookLabel, text: "LOGGED IN WITH FACEBOOK")
     
-    themeButtonWithText(facebookButton, text: "LOGOUT")
+//    themeButtonWithText(facebookButton, text: "LOGOUT")
     facebookButton.tintColor = UIColor(red: 0.19, green: 0.38, blue: 0.73, alpha: 1.0)
     
     facebookImageView.image = UIImage(named: "fb")
@@ -94,14 +94,14 @@ class ProfileViewController : UITableViewController, UITextFieldDelegate {
   }
   
   
-  func themeButtonWithText(button: UIButton, text:String){
-    let background = UIImage(named: "border-button")?.resizableImageWithCapInsets(UIEdgeInsetsMake(10, 10, 10, 10))
-    let backgroundTemplate = background!.imageWithRenderingMode(.AlwaysTemplate)
-    
-    button.setBackgroundImage(backgroundTemplate, forState: .Normal)
-    button.setTitle(text, forState: .Normal)
-    button.tintColor = UIColor.whiteColor()
-  }
+//  func themeButtonWithText(button: UIButton, text:String){
+//    let background = UIImage(named: "border-button")?.resizableImageWithCapInsets(UIEdgeInsetsMake(10, 10, 10, 10))
+//    let backgroundTemplate = background!.imageWithRenderingMode(.AlwaysTemplate)
+//    
+//    button.setBackgroundImage(backgroundTemplate, forState: .Normal)
+//    button.setTitle(text, forState: .Normal)
+//    button.tintColor = UIColor.whiteColor()
+//  }
   
   func themeTextFieldWithText(textField:UITextField, text: String){
     let largeFontSize : CGFloat = 17

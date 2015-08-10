@@ -24,6 +24,11 @@ let mainBoard = UIStoryboard(name: "Main", bundle: nil)
 var navbarHeight:CGFloat = 64
 var tabbarHeight:CGFloat = 49
 
+// Color Settings
+var backgroundColor: UIColor = UIColor.whiteColor()
+var navbarColor: UIColor = UIColor.whiteColor()
+var textColor: UIColor = UIColor.blackColor()
+
 // Version Settings
 let iosVersion = NSString(string: Device.systemVersion).doubleValue
 let iOS8 = iosVersion >= 8
@@ -33,6 +38,7 @@ let iOS7 = iosVersion >= 7 && iosVersion < 8
 let userPF = PFUser()
 var currentUser = PFUser.currentUser()!
 var hasSignedUp = false
+var descriptionSeed = "Hello. I'm currently a student and I just signed up for Tend."
 
 /* Helper Function: scaleImage(image, newSize) */
 func scaleImage(image:UIImage, newSize:CGFloat) -> UIImage {
