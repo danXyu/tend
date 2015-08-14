@@ -101,7 +101,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
       return 1
     }
   }
-//  
+
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCellWithIdentifier("NoDateCell", forIndexPath: indexPath) as! UITableViewCell
       return cell
@@ -144,5 +144,11 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
 //      }
 //      return cell
 //    }
+  }
+  
+  func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    cell.separatorInset = UIEdgeInsetsZero
+    cell.layoutMargins = UIEdgeInsetsZero
+    cell.selectionStyle = .None
   }
 }

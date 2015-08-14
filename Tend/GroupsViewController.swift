@@ -121,4 +121,15 @@ class GroupsViewController: UITableViewController {
     let cell = tableView.dequeueReusableCellWithIdentifier("NoGroupsCell", forIndexPath: indexPath) as! UITableViewCell
     return cell
   }
+  
+  override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    cell.separatorInset = UIEdgeInsetsZero
+    cell.layoutMargins = UIEdgeInsetsZero
+    cell.selectionStyle = .None
+  }
+  
+  override func viewDidLayoutSubviews() {
+    tableView.separatorInset = UIEdgeInsetsZero
+    tableView.layoutMargins = UIEdgeInsetsZero
+  }
 }

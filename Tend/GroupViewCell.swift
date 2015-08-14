@@ -25,7 +25,8 @@ class GroupViewCell: UITableViewCell {
   // *****************************************
   
   @IBOutlet weak var groupName: UILabel!
-  @IBOutlet weak var groupDescription: UILabel!
+  @IBOutlet weak var groupDescription: UITextView!
+  @IBOutlet weak var groupMembers: UILabel!
   
   
   // *****************************************
