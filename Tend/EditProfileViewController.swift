@@ -1,9 +1,9 @@
 //
-//  File: ProfileViewController.swift
-//
+//  File: EditProfileViewController.swift
+//  
 //  Application: Tend
 //
-//  Created by Dan Xiaoyu Yu on 8/8/15.
+//  Created by Dan Xiaoyu Yu on 8/12/15.
 //  Copyright (c) 2015 Corner Innovations. All rights reserved.
 //
 
@@ -11,73 +11,106 @@
 import Foundation
 import UIKit
 import Parse
+import MBProgressHUD
 
 
-// *****************************
-// MARK: - ProfileViewController
-// *****************************
+// *********************************
+// MARK: - EditProfileViewController
+// *********************************
 
-class ProfileViewController : UITableViewController {
+class EditProfileViewController: UITableViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
-  @IBOutlet var profileContainer : UIView!
-  @IBOutlet var profileImageView : UIImageView!
-  @IBOutlet var bgImageView : UIImageView!
+  @IBOutlet var profileContainer: UIView!
+  @IBOutlet var profileImageView: UIImageView!
+  @IBOutlet var bgImageView: UIImageView!
+  
+  @IBOutlet var nameLabel: UILabel!
+  @IBOutlet var nameTextField: UITextField!
+  @IBOutlet var emailLabel: UILabel!
+  @IBOutlet var emailFieldLabel: UILabel!
+  @IBOutlet var schoolLabel: UILabel!
+  @IBOutlet var schoolTextField: UITextField!
+  @IBOutlet var yearLabel: UILabel!
+  @IBOutlet var yearTextField: UITextField!
+  
+  var buttonclicked: Int!
+  var profileImageChanged: Bool = false
+  
 
-  @IBOutlet var nameLabel : UILabel!
-  @IBOutlet var nameFieldLabel : UILabel!
-  @IBOutlet var emailLabel : UILabel!
-  @IBOutlet var emailFieldLabel : UILabel!
-  @IBOutlet var schoolLabel : UILabel!
-  @IBOutlet var schoolFieldLabel : UILabel!
-  @IBOutlet var yearLabel : UILabel!
-  @IBOutlet var yearFieldLabel : UILabel!
-  @IBOutlet var logoutButton : UIButton!
-  
-  
   // ************************************
   // MARK: - Necessary View Configuration
   // ************************************
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    tableView.separatorColor = UIColor(white: 0.85, alpha: 1.0)
+    tableView.separatorColor = UIColor(white: 0.75, alpha: 1.0)
     bgImageView.image = UIImage(named: "ProfileBackground")
     profileImageView.image = UIImage(named: "ProfilePicPlaceholder")
     profileImageView.layer.cornerRadius = 35
     profileImageView.clipsToBounds = true
-    
-    themeButtonWithText(logoutButton, text: "LOGOUT")
-    logoutButton.tintColor = UIColor(red: 0.19, green: 0.38, blue: 0.73, alpha: 1.0)
-    logoutButton.addTarget(self, action: "logoutUser", forControlEvents: .TouchUpInside)
   }
   
   override func viewDidAppear(animated: Bool) {
     if let pic = currentUser.objectForKey("proPic") as? PFFile {
       getImage("proPic", profileImageView)
     }
-    nameFieldLabel.text = currentUser.objectForKey("fullName") as? String
+    nameTextField.text = currentUser.objectForKey("fullName") as? String
     emailFieldLabel.text = currentUser.email
-    schoolFieldLabel.text = currentUser.objectForKey("school") as? String
-    yearFieldLabel.text = currentUser.objectForKey("year") as? String
+    schoolTextField.text = currentUser.objectForKey("school") as? String
+    yearTextField.text = currentUser.objectForKey("year") as? String
+  }
+  
+  @IBAction func profilePicTapped(sender: AnyObject) {
+    var mediapicker = UIImagePickerController()
+    mediapicker.allowsEditing = true
+    mediapicker.delegate = self
+    mediapicker.sourceType = .PhotoLibrary
+    self.presentViewController(mediapicker, animated: true, completion: nil)
+  }
+  
+  func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    var pickedImg = info[UIImagePickerControllerEditedImage] as! UIImage
+    profileImageChanged = true
+    profileImageView.image = pickedImg
+    self.dismissViewControllerAnimated(true, completion: nil)
   }
   
   
-  func themeButtonWithText(button: UIButton, text: String){
-    let background = UIImage(named: "BorderButton")?.resizableImageWithCapInsets(UIEdgeInsetsMake(10, 10, 10, 10))
-    let backgroundTemplate = background!.imageWithRenderingMode(.AlwaysTemplate)
-    button.setBackgroundImage(backgroundTemplate, forState: .Normal)
-    button.setTitle(text, forState: .Normal)
-    button.tintColor = UIColor.whiteColor()
+  // ********************************
+  // MARK: - Parse User Configuration
+  // ********************************
+  
+  @IBAction func cancelTapped(sender: AnyObject) {
+    self.dismissViewControllerAnimated(true, completion: nil)
   }
   
-  
-  // ***************************************
-  // MARK: - Parse Logging Out Configuration
-  // ***************************************
-  
-  func logoutUser() {
-    PFUser.logOut()
-    self.performSegueWithIdentifier("logoutSuccess", sender: self)
+  @IBAction func saveTapped(sender: AnyObject) {
+    MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+    if nameTextField.text.isEmpty || schoolTextField.text.isEmpty || yearTextField.text.isEmpty {
+      MBProgressHUD.hideHUDForView(self.view, animated: true)
+      var alert = UIAlertView(title: "Form Field Error", message: "Name, email, or school name cannot be Empty", delegate: self, cancelButtonTitle: "Try Again")
+      alert.show()
+    } else {
+      currentUser["fullName"] = nameTextField.text
+      currentUser["school"] = schoolTextField.text
+      currentUser["year"] = yearTextField.text
+      
+      if profileImageChanged == true {
+        var imageSmall = scaleImage(self.profileImageView.image!, 60)
+        var dataS = UIImageJPEGRepresentation(imageSmall, 0.7)
+        currentUser["proPic"] = PFFile(name: "image.jpg", data: dataS)
+        currentUser.saveInBackground()
+      }
+      
+      currentUser.saveInBackgroundWithBlock() { (done, error) -> Void in
+        if error == nil {
+          self.dismissViewControllerAnimated(true, completion: nil)
+          MBProgressHUD.hideHUDForView(self.view, animated: true)
+        } else {
+          MBProgressHUD.hideHUDForView(self.view, animated: true)
+        }
+      }
+    }
   }
   
   
@@ -88,16 +121,16 @@ class ProfileViewController : UITableViewController {
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
-
+  
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 6
+    return 5
   }
   
   override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     if indexPath.row == 0 {
       return 150
     } else {
-      return 62
+      return 60
     }
   }
   
@@ -105,7 +138,7 @@ class ProfileViewController : UITableViewController {
     if indexPath.row == 5 {
       cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, CGRectGetWidth(self.tableView.bounds));
     } else {
-      
+      cell.separatorInset = UIEdgeInsetsZero
     }
     cell.layoutMargins = UIEdgeInsetsZero
     cell.selectionStyle = .None
@@ -129,6 +162,14 @@ class ProfileViewController : UITableViewController {
   override func viewWillDisappear(animated: Bool) {
     super.viewWillDisappear(animated)
     self.deregisterFromKeyboardNotifications()
+  }
+  
+  func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    var textlength = (textView.text as NSString).length + (text as NSString).length - range.length
+    if text == "\n" {
+      textView.resignFirstResponder()
+    }
+    return (textlength > 150) ? false : true
   }
   
   func registerForKeyboardNotifications () -> Void   {

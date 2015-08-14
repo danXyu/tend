@@ -53,10 +53,11 @@ class LoginViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    bgImageView.image = UIImage(named: "RegistrationBackground")
+    bgImageView.image = UIImage(named: "LoginBackgroundBeta")
     bgImageView.contentMode = .ScaleAspectFill
     
-    titleLabel.text = "Sign In"
+    titleLabel.text = "Tend"
+    titleLabel.font = UIFont(name: defaultFont, size: 50)
     titleLabel.textColor = UIColor.whiteColor()
     
     let attributedText = NSMutableAttributedString(string: "Don't have an account? Sign up")
@@ -64,31 +65,39 @@ class LoginViewController: UIViewController {
     attributedText.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor(), range: NSMakeRange(0, attributedText.length))
     noAccountButton.setAttributedTitle(attributedText, forState: .Normal)
     noAccountButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+    noAccountButton.titleLabel?.font = UIFont(name: defaultFont, size: 12)
     
     forgotPassword.setTitle("Forgot Password?", forState: .Normal)
     forgotPassword.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+    forgotPassword.titleLabel?.font = UIFont(name: defaultFont, size: 12)
     
     userContainer.backgroundColor = UIColor.clearColor()
     userLabel.text = "Email"
     userLabel.textColor = UIColor.whiteColor()
+    userLabel.font = UIFont(name: defaultFont, size: 18)
     userTextField.text = ""
     userTextField.textColor = UIColor.whiteColor()
+    userTextField.font = UIFont(name: defaultFont, size: 18)
     
     passwordContainer.backgroundColor = UIColor.clearColor()
     passwordLabel.text = "Password"
     passwordLabel.textColor = UIColor.whiteColor()
+    passwordLabel.font = UIFont(name: defaultFont, size: 18)
     passwordTextField.text = ""
     passwordTextField.textColor = UIColor.whiteColor()
+    passwordTextField.font = UIFont(name: defaultFont, size: 18)
     passwordTextField.secureTextEntry = true
     
     signInButton.setTitle("Sign In", forState: .Normal)
     signInButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+    signInButton.titleLabel?.font = UIFont(name: defaultFont, size: 22)
     signInButton.layer.borderWidth = 3
     signInButton.layer.borderColor = UIColor.whiteColor().CGColor
     signInButton.layer.cornerRadius = 5
     signInButton.addTarget(self, action: "loginNormal", forControlEvents: .TouchUpInside)
     
     facebookButton.setTitle("Sign in with Facebook", forState: .Normal)
+    facebookButton.titleLabel?.font = UIFont(name: defaultFont, size: 16)
     facebookButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
     facebookButton.backgroundColor = UIColor(red: 0.21, green: 0.30, blue: 0.55, alpha: 1.0)
     facebookButton.addTarget(self, action: "loginFacebook", forControlEvents: .TouchUpInside)
@@ -170,30 +179,21 @@ class LoginViewController: UIViewController {
   
   func createFacebookUser() {
     FBRequestConnection.startWithGraphPath("me", completionHandler: { (connection, user, fbError) -> Void in
-      
-      if let userEmail = user.objectForKey("email") as? String {
-        currentUser.email = userEmail
-      }
-      
-      if let gender = user.objectForKey("gender") as? String {
-        currentUser["gender"] = gender
-      }
-      
+      if let userEmail = user.objectForKey("email") as? String {currentUser.email = userEmail}
       var id = user.objectID as String
       var url = NSURL(string: "https://graph.facebook.com/\(id)/picture?width=640&height=640")!
       var data = NSData(contentsOfURL: url)
       var image = UIImage(data: data!)
-      var imageL = scaleImage(image!, 320)
       var imageS = scaleImage(image!, 60)
-      var dataL = UIImageJPEGRepresentation(imageL, 0.9)
       var dataS = UIImageJPEGRepresentation(imageS, 0.9)
       
-      currentUser["dpLarge"] = PFFile(name: "dpLarge.jpg", data: dataL)
-      currentUser["dpSmall"] = PFFile(name: "dpSmall.jpg", data: dataS)
-      currentUser["fullname"] = user.name
-      currentUser["name"] = user.first_name as String!
       currentUser["fbId"] = user.objectID as String!
-      currentUser["age"] = 18
+      currentUser["proPic"] = PFFile(name: "proPic.jpg", data: dataS)
+      currentUser["fullName"] = user.name
+      currentUser["firstName"] = user.first_name as String!
+      currentUser["lastName"] = user.last_name as String!
+      currentUser["school"] = "Generic High School"
+      currentUser["year"] = "Year Placeholder"
       
       currentUser.saveInBackgroundWithBlock({ (done, error) -> Void in
         if error == nil {

@@ -7,10 +7,12 @@
 //  Copyright (c) 2015 Corner Innovations. All rights reserved.
 //
 
+
 import Foundation
 import UIKit
 import Parse
 import FacebookSDK
+
 
 // Parse Settings
 var parseAppId = "BztXTqm8HNGsiwFoy1aF7uPc1DGmBvXm6uB8L14r"
@@ -24,9 +26,21 @@ let mainBoard = UIStoryboard(name: "Main", bundle: nil)
 var navbarHeight:CGFloat = 64
 var tabbarHeight:CGFloat = 49
 
+// Font Settings
+var defaultFont: String = "Avenir-Light"
+
 // Color Settings
+//var backgroundColor: UIColor = UIColor.whiteColor()
+//var tabbarColor: UIColor = UIColor(red: (203/256), green: (229/256), blue: (235/256), alpha: 1.0)
+//var navbarColor: UIColor = UIColor(red: (203/256), green: (229/256), blue: (235/256), alpha: 1.0)
+//var navbarTextColor: UIColor = UIColor.whiteColor()
+//var textColor: UIColor = UIColor.blackColor()
+
 var backgroundColor: UIColor = UIColor.whiteColor()
-var navbarColor: UIColor = UIColor.whiteColor()
+var tabbarColor: UIColor = UIColor(red: 0.0, green: (122.0/255.0), blue: 1.0, alpha: 1.0)
+var tabbarTextColor: UIColor = UIColor.whiteColor()
+var navbarColor: UIColor = UIColor(red: 0.0, green: (122.0/255.0), blue: 1.0, alpha: 1.0)
+var navbarTextColor: UIColor = UIColor.whiteColor()
 var textColor: UIColor = UIColor.blackColor()
 
 // Version Settings

@@ -27,9 +27,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
+//    UINavigationBar.appearance().barTintColor = navbarColor
+    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: navbarTextColor]
+    UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Light", size: 22)!]
+//    UITabBar.appearance().barTintColor = tabbarColor
+//    UITabBar.appearance().tintColor = tabbarTextColor
+//    UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+    
     Parse.setApplicationId(parseAppId, clientKey: parseAppSecret)
     PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
-    PFUser.logOut()
+    PFUser.enableRevocableSessionInBackground()
     
     if PFUser.currentUser() == nil || !PFUser.currentUser()!.isAuthenticated() {
       var redirectLogin = mainBoard.instantiateViewControllerWithIdentifier("LoginVC") as! LoginViewController
@@ -70,8 +77,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-    //AudioServicesPlayAlertSound(1110)
-    
     NSNotificationCenter.defaultCenter().postNotificationName("displayMessage", object: userInfo)
     NSNotificationCenter.defaultCenter().postNotificationName("reloadMessages", object: nil)
   }

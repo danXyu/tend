@@ -1,6 +1,6 @@
 //
-//  File: GroupViewCell.swift
-//  
+//  File: DateViewCell.swift
+//
 //  Application: Tend
 //
 //  Created by Dan Xiaoyu Yu on 8/9/15.
@@ -13,19 +13,18 @@ import UIKit
 import Parse
 
 
-// *********************
-// MARK: - GroupViewCell
-// *********************
+// ********************
+// MARK: - DateViewCell
+// ********************
 
-class GroupViewCell: UITableViewCell {
-
+class DateViewCell: UITableViewCell {
+  
   
   // *****************************************
   // MARK: - Variables, Outlets, and Constants
   // *****************************************
   
   @IBOutlet weak var groupName: UILabel!
-  @IBOutlet weak var groupDescription: UILabel!
   
   
   // *****************************************

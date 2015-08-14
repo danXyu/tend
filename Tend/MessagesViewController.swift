@@ -9,14 +9,14 @@
 
 
 import UIKit
+import Foundation
 import Parse
-import ParseFacebookUtilsV4
 
 
-/* View Controller: MessagesViewController
- * ---------------------------------------
- *
- */
-class MessagesViewController: UIViewController {
+// ******************************
+// MARK: - MessagesViewController
+// ******************************
+
+class MessagesViewController: UITableViewController {
 
 }
