@@ -76,6 +76,10 @@ class NewGroupViewController: UITableViewController, UITextFieldDelegate, UINavi
           self.dismissViewControllerAnimated(true, completion: nil)
         } else {
           MBProgressHUD.hideHUDForView(self.view, animated: true)
+          if let errorString = error!.userInfo?["error"] as? NSString {
+            var alert = UIAlertView(title: "Error", message: errorString as String, delegate: self, cancelButtonTitle: "okay")
+            alert.show()
+          }
         }
       }
     }

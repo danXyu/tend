@@ -26,6 +26,7 @@
 		156489FF1B76EACA004A6CF0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156489FE1B76EACA004A6CF0 /* ProfileViewController.swift */; };
 		15B1641F1B7E745D007AD727 /* DateViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1641E1B7E745D007AD727 /* DateViewCell.swift */; };
 		15B164221B7E8276007AD727 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15B164201B7E8276007AD727 /* Main.storyboard */; };
+		15B164261B7E9EA9007AD727 /* GroupFoundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B164251B7E9EA9007AD727 /* GroupFoundCell.swift */; };
 		85140457F66D86A4F1A3269C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D166A3A1FD93C3A7BCD39132 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		156489FE1B76EACA004A6CF0 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		15B1641E1B7E745D007AD727 /* DateViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateViewCell.swift; sourceTree = "<group>"; };
 		15B164211B7E8276007AD727 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		15B164251B7E9EA9007AD727 /* GroupFoundCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupFoundCell.swift; sourceTree = "<group>"; };
 		7D276B0317E250FF5594EBCF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B9729568CAE81C0CA3BB10D1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D166A3A1FD93C3A7BCD39132 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,6 +228,7 @@
 				154ADC851B77E9B400DA2AA6 /* GroupViewController.swift */,
 				154ADC871B77EDAB00DA2AA6 /* NewGroupViewController.swift */,
 				154ADC891B77EDC000DA2AA6 /* SearchGroupsViewController.swift */,
+				15B164251B7E9EA9007AD727 /* GroupFoundCell.swift */,
 			);
 			name = Groups;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				154ADC861B77E9B400DA2AA6 /* GroupViewController.swift in Sources */,
 				154ADC801B77C7B800DA2AA6 /* SignupViewController.swift in Sources */,
 				1516DB4D1B7BCFF500903E5B /* EditProfileViewController.swift in Sources */,
+				15B164261B7E9EA9007AD727 /* GroupFoundCell.swift in Sources */,
 				156489C61B73E8C0004A6CF0 /* AppDelegate.swift in Sources */,
 				156489EB1B73E9D3004A6CF0 /* Configuration.swift in Sources */,
 				156489FF1B76EACA004A6CF0 /* ProfileViewController.swift in Sources */,

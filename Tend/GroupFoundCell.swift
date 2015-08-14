@@ -1,6 +1,6 @@
 //
-//  File: GroupViewCell.swift
-//  
+//  File: GroupFoundCell.swift
+//
 //  Application: Tend
 //
 //  Created by Dan Xiaoyu Yu on 8/9/15.
@@ -13,21 +13,21 @@ import UIKit
 import Parse
 
 
-// *********************
-// MARK: - GroupViewCell
-// *********************
+// **********************
+// MARK: - GroupFoundCell
+// **********************
 
-class GroupViewCell: UITableViewCell {
-
+class GroupFoundCell: UITableViewCell {
+  
   
   // *****************************************
   // MARK: - Variables, Outlets, and Constants
   // *****************************************
   
   @IBOutlet weak var groupName: UILabel!
-  @IBOutlet weak var numMembers: UILabel!
-  @IBOutlet weak var manageButton: UIButton!
-  @IBOutlet weak var checkinButton: UIButton!
+  @IBOutlet weak var schoolName: UILabel!
+  @IBOutlet weak var password: UITextField!
+  @IBOutlet weak var joinButton : UIButton!
   
   
   // *****************************************

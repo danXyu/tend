@@ -18,24 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTy-a1-H5c" userLabel="Calendar View" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="64" width="600" height="275"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="275" id="qVD-WG-tHI"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="DvG-Vw-a4h"/>
-                                    <outlet property="delegate" destination="9pv-A4-QxB" id="H22-c4-Ep8"/>
-                                </connections>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Check-Ins" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0M-uj-f2M">
                                 <rect key="frame" x="221" y="349" width="158" height="33"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="U7G-8y-ZjW">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="U7G-8y-ZjW">
                                 <rect key="frame" x="0.0" y="390" width="600" height="161"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -46,7 +35,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some Group Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6IK-Ox-Z8C">
-                                                    <rect key="frame" x="18" y="10" width="147" height="23.5"/>
+                                                    <rect key="frame" x="226.5" y="10" width="147" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -59,7 +48,7 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="EqA-bZ-tRk"/>
+                                                    <exclude reference="x4A-p2-wT9"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -74,7 +63,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No check-in data for the selected date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etU-sl-sQ1">
-                                                    <rect key="frame" x="18" y="10" width="290" height="23.5"/>
+                                                    <rect key="frame" x="155" y="10" width="290" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -88,7 +77,7 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="Ma2-a4-IVK"/>
+                                                    <exclude reference="2kH-6b-cM8"/>
                                                     <exclude reference="mfX-B3-Ggf"/>
                                                 </mask>
                                             </variation>
@@ -100,12 +89,27 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="mP3-rH-f7W"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTy-a1-H5c" userLabel="Calendar View" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="64" width="600" height="275"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="275" id="qVD-WG-tHI"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="DvG-Vw-a4h"/>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="H22-c4-Ep8"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kTy-a1-H5c" firstAttribute="leading" secondItem="Y3X-aL-5EG" secondAttribute="leadingMargin" constant="-16" id="Kc0-BK-5I4"/>
+                            <constraint firstItem="hzb-AX-oHa" firstAttribute="top" secondItem="U7G-8y-ZjW" secondAttribute="bottom" id="KtD-KS-d9h"/>
+                            <constraint firstItem="U7G-8y-ZjW" firstAttribute="top" secondItem="p0M-uj-f2M" secondAttribute="bottom" constant="8" id="OZM-ds-iNa"/>
                             <constraint firstAttribute="centerX" secondItem="p0M-uj-f2M" secondAttribute="centerX" id="S4b-du-D9k"/>
                             <constraint firstItem="kTy-a1-H5c" firstAttribute="width" secondItem="Y3X-aL-5EG" secondAttribute="height" multiplier="1:1" constant="2" id="dPf-oV-4tz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="U7G-8y-ZjW" secondAttribute="trailing" constant="-16" id="gM5-vR-fAe"/>
+                            <constraint firstItem="U7G-8y-ZjW" firstAttribute="leading" secondItem="Y3X-aL-5EG" secondAttribute="leadingMargin" constant="-16" id="h5W-Nt-hok"/>
                             <constraint firstItem="kTy-a1-H5c" firstAttribute="top" secondItem="ab5-ZJ-rlX" secondAttribute="bottom" id="nNU-Uh-QpH"/>
                             <constraint firstItem="hzb-AX-oHa" firstAttribute="top" secondItem="kTy-a1-H5c" secondAttribute="bottom" constant="250" id="nTv-Oc-1Kh"/>
                             <constraint firstItem="p0M-uj-f2M" firstAttribute="top" secondItem="kTy-a1-H5c" secondAttribute="bottom" constant="10" id="sNo-O4-grY"/>
@@ -135,48 +139,55 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupCell" rowHeight="150" id="OdU-KO-brr" customClass="GroupViewCell" customModule="Tend" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupCell" rowHeight="80" id="OdU-KO-brr" customClass="GroupViewCell" customModule="Tend" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OdU-KO-brr" id="gXL-0e-42H">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Members" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61u-Ex-sQQ">
+                                            <rect key="frame" x="451" y="8" width="130.5" height="19.5"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ya-6f-Iyd">
+                                            <rect key="frame" x="18" y="35" width="95" height="32"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                            <state key="normal" title="Manage Group">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBK-N7-PJi">
+                                            <rect key="frame" x="528" y="35" width="54" height="32"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
+                                            <state key="normal" title="Check In">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpx-wv-9v1">
                                             <rect key="frame" x="18" y="8" width="81.5" height="19.5"/>
                                             <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Members" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61u-Ex-sQQ">
-                                            <rect key="frame" x="451.5" y="8" width="130.5" height="19.5"/>
-                                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Group Description" translatesAutoresizingMaskIntoConstraints="NO" id="Qk3-j7-83X">
-                                            <rect key="frame" x="18" y="37" width="564" height="100"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="100" id="GT0-e8-NgM"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Qk3-j7-83X" secondAttribute="trailing" constant="10" id="AyT-vf-3SU"/>
-                                        <constraint firstItem="Qk3-j7-83X" firstAttribute="top" secondItem="gpx-wv-9v1" secondAttribute="bottom" constant="10" id="BDZ-Q6-zPQ"/>
+                                        <constraint firstItem="4Ya-6f-Iyd" firstAttribute="leading" secondItem="gpx-wv-9v1" secondAttribute="leading" id="BAi-lb-6y6"/>
                                         <constraint firstItem="61u-Ex-sQQ" firstAttribute="top" secondItem="gXL-0e-42H" secondAttribute="topMargin" id="Kzs-0n-ugr"/>
+                                        <constraint firstItem="PBK-N7-PJi" firstAttribute="trailing" secondItem="61u-Ex-sQQ" secondAttribute="trailing" id="MiF-dd-fzc"/>
                                         <constraint firstItem="gpx-wv-9v1" firstAttribute="top" secondItem="gXL-0e-42H" secondAttribute="topMargin" id="RFy-Wm-WPh"/>
                                         <constraint firstItem="gpx-wv-9v1" firstAttribute="leading" secondItem="gXL-0e-42H" secondAttribute="leadingMargin" constant="10" id="Xo8-xa-eEP"/>
-                                        <constraint firstItem="Qk3-j7-83X" firstAttribute="leading" secondItem="gpx-wv-9v1" secondAttribute="leading" id="YUF-eN-odE"/>
+                                        <constraint firstItem="PBK-N7-PJi" firstAttribute="top" secondItem="61u-Ex-sQQ" secondAttribute="bottom" constant="7.5" id="t6v-K9-MVz"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="61u-Ex-sQQ" secondAttribute="trailing" constant="10" id="uBe-j9-qwA"/>
+                                        <constraint firstItem="4Ya-6f-Iyd" firstAttribute="top" secondItem="gpx-wv-9v1" secondAttribute="bottom" constant="7.5" id="utW-z7-fnc"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="groupDescription" destination="Qk3-j7-83X" id="BoW-sN-EUy"/>
-                                    <outlet property="groupMembers" destination="61u-Ex-sQQ" id="oLa-EC-3rT"/>
-                                    <outlet property="groupName" destination="gpx-wv-9v1" id="GQX-ug-OpX"/>
+                                    <outlet property="checkinButton" destination="PBK-N7-PJi" id="y1i-ud-RiI"/>
+                                    <outlet property="groupName" destination="gpx-wv-9v1" id="wvk-5C-YG7"/>
+                                    <outlet property="manageButton" destination="4Ya-6f-Iyd" id="lca-Tj-mDj"/>
+                                    <outlet property="numMembers" destination="61u-Ex-sQQ" id="Uik-vj-MbI"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoGroupsCell" id="nRn-P0-YvE">
@@ -253,48 +264,53 @@
                                 <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupFoundCell" rowHeight="150" id="PKm-9i-6Hi" customClass="GroupViewCell" customModule="Tend" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupFoundCell" rowHeight="80" id="PKm-9i-6Hi" customClass="GroupFoundCell" customModule="Tend" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="225" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PKm-9i-6Hi" id="LFb-bc-Gx6">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJx-Rv-b5R">
-                                                    <rect key="frame" x="18" y="8" width="81.5" height="19.5"/>
+                                                    <rect key="frame" x="13" y="8" width="81.5" height="19.5"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Group Description" translatesAutoresizingMaskIntoConstraints="NO" id="h5b-6B-h9x">
-                                                    <rect key="frame" x="18" y="37" width="564" height="100"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="100" id="ng0-RH-CWb"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Members" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBv-7I-Ppf">
-                                                    <rect key="frame" x="451.5" y="8" width="130.5" height="19.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="School Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBv-7I-Ppf">
+                                                    <rect key="frame" x="503" y="8" width="84" height="19.5"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wMM-yF-yLu">
+                                                    <rect key="frame" x="13" y="35" width="116.5" height="30"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5eS-Ry-DWX">
+                                                    <rect key="frame" x="517" y="34" width="70" height="32"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
+                                                    <state key="normal" title="Join Group">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="h5b-6B-h9x" firstAttribute="top" secondItem="MJx-Rv-b5R" secondAttribute="bottom" constant="10" id="354-HT-Nry"/>
-                                                <constraint firstItem="MJx-Rv-b5R" firstAttribute="leading" secondItem="LFb-bc-Gx6" secondAttribute="leadingMargin" constant="10" id="Ryp-RE-8Ud"/>
+                                                <constraint firstItem="5eS-Ry-DWX" firstAttribute="centerY" secondItem="wMM-yF-yLu" secondAttribute="centerY" id="Ghp-St-ruf"/>
+                                                <constraint firstItem="MJx-Rv-b5R" firstAttribute="leading" secondItem="LFb-bc-Gx6" secondAttribute="leadingMargin" constant="5" id="Ryp-RE-8Ud"/>
+                                                <constraint firstItem="5eS-Ry-DWX" firstAttribute="trailing" secondItem="MBv-7I-Ppf" secondAttribute="trailing" id="Sv2-MB-FLB"/>
+                                                <constraint firstItem="wMM-yF-yLu" firstAttribute="top" secondItem="MJx-Rv-b5R" secondAttribute="bottom" constant="7.5" id="cjf-4H-Iie"/>
                                                 <constraint firstItem="MJx-Rv-b5R" firstAttribute="top" secondItem="LFb-bc-Gx6" secondAttribute="topMargin" id="hZo-G5-pNQ"/>
-                                                <constraint firstItem="h5b-6B-h9x" firstAttribute="leading" secondItem="MJx-Rv-b5R" secondAttribute="leading" id="hdZ-y7-GGt"/>
+                                                <constraint firstItem="wMM-yF-yLu" firstAttribute="leading" secondItem="MJx-Rv-b5R" secondAttribute="leading" id="jb4-iX-F3y"/>
                                                 <constraint firstItem="MBv-7I-Ppf" firstAttribute="top" secondItem="LFb-bc-Gx6" secondAttribute="topMargin" id="myS-hW-aI4"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="h5b-6B-h9x" secondAttribute="trailing" constant="10" id="pEc-Xl-Cqc"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="MBv-7I-Ppf" secondAttribute="trailing" constant="10" id="s8W-io-fID"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="MBv-7I-Ppf" secondAttribute="trailing" constant="5" id="s8W-io-fID"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="groupDescription" destination="h5b-6B-h9x" id="gwL-Ox-2yp"/>
-                                            <outlet property="groupMembers" destination="MBv-7I-Ppf" id="HLs-v3-SMx"/>
-                                            <outlet property="groupName" destination="MJx-Rv-b5R" id="c53-SS-8UM"/>
+                                            <outlet property="groupName" destination="MJx-Rv-b5R" id="iOI-cb-u3y"/>
+                                            <outlet property="joinButton" destination="5eS-Ry-DWX" id="US3-7f-776"/>
+                                            <outlet property="password" destination="wMM-yF-yLu" id="3G7-0N-9YX"/>
+                                            <outlet property="schoolName" destination="MBv-7I-Ppf" id="oaK-UK-Gov"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoGroupsFoundCell" id="S7k-o5-5HM">

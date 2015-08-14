@@ -11,6 +11,7 @@
 import Foundation
 import UIKit
 import Parse
+import MBProgressHUD
 
 
 // **********************************
@@ -36,12 +37,34 @@ class SearchGroupsViewController: UIViewController, UITableViewDelegate, UITable
   
   func search(searchText: String? = nil){
     let query = PFQuery(className: "Groups")
-    if(searchText != nil){
+    if (searchText != nil) {
       query.whereKey("name", containsString: searchText)
     }
     query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
       self.data = results as? [PFObject]
       self.tableView.reloadData()
+    }
+  }
+  
+  func joinGroup(sender: AnyObject) {
+    var button: UIButton = sender as! UIButton
+    let group = self.data[button.tag]
+    group.addUniqueObject(currentUser, forKey: "members")
+    
+    MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+    group.saveInBackgroundWithBlock() { (success, error) -> Void in
+      if error == nil {
+        MBProgressHUD.hideHUDForView(self.view, animated: true)
+        var alert = UIAlertView(title: "Success", message: "You have successfully been added to the group. Please check your groups", delegate: self, cancelButtonTitle: "Continue")
+        alert.show()
+        self.dismissViewControllerAnimated(true, completion: nil)
+      } else {
+        MBProgressHUD.hideHUDForView(self.view, animated: true)
+        if let errorString = error!.userInfo?["error"] as? NSString {
+          var alert = UIAlertView(title: "Error", message: errorString as String, delegate: self, cancelButtonTitle: "okay")
+          alert.show()
+        }
+      }
     }
   }
   
@@ -70,25 +93,34 @@ class SearchGroupsViewController: UIViewController, UITableViewDelegate, UITable
   }
   
   func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    return 150
+    return 80
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if (self.data != nil) {
       return self.data.count
     } else {
-      return 0
+      return 1
     }
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("GroupFoundCell", forIndexPath: indexPath) as! GroupViewCell
-    let group = self.data[indexPath.row]
-    cell.groupName!.text = group["name"] as? String
-    cell.groupDescription!.text = group["description"] as? String
-    var numMembers = group["countMembers"] as? String
-    cell.groupMembers!.text = "\(numMembers) Members"
-    return cell
+    if self.data != nil {
+      if self.data.count == 0 {
+        let cell = tableView.dequeueReusableCellWithIdentifier("NoGroupsFoundCell", forIndexPath: indexPath) as! UITableViewCell
+        return cell
+      } else {
+        let cell = tableView.dequeueReusableCellWithIdentifier("GroupFoundCell", forIndexPath: indexPath) as! GroupFoundCell
+        let group = self.data[indexPath.row]
+        cell.groupName!.text = group["name"] as? String
+        cell.schoolName!.text = group["school"] as? String
+        cell.joinButton.tag = indexPath.row
+        cell.joinButton.addTarget(self, action: "joinGroup:", forControlEvents: .TouchUpInside)
+        return cell
+      }
+    } else {
+      let cell = tableView.dequeueReusableCellWithIdentifier("NoGroupsFoundCell", forIndexPath: indexPath) as! UITableViewCell
+      return cell
+    }
   }
-
 }
