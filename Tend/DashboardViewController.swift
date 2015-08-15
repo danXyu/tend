@@ -3,15 +3,15 @@
 //  
 //  Application: Tend
 //
-//  Created by Dan Xiaoyu Yu on 8/8/15.
-//  Copyright (c) 2015 Corner Innovations. All rights reserved.
+//  Created by Donna Yu on 8/6/15.
+//  Copyright (c) 2015 Donna Yu. All rights reserved.
 //
 
 
 import Foundation
 import UIKit
 import FSCalendar
-import Parse
+//import Parse
 
 
 // *******************************
@@ -26,7 +26,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   // *****************************************
   
   private weak var calendar: FSCalendar!
-  var groups = [PFObject]()
+  var groups = [NSObject]()
   
   
   // **********************************

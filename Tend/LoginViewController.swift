@@ -3,8 +3,8 @@
 //
 //  Application: Tend
 //
-//  Created by Dan Xiaoyu Yu on 8/6/15.
-//  Copyright (c) 2015 Corner Innovations. All rights reserved.
+//  Created by Donna Yu on 8/6/15.
+//  Copyright (c) 2015 Donna Yu. All rights reserved.
 //
 
 
@@ -20,7 +20,7 @@ import FacebookSDK
 // MARK: - LoginViewController
 // ***************************
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController , UITextFieldDelegate{
   
   
   // *****************************************
@@ -52,7 +52,9 @@ class LoginViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    self.passwordTextField.delegate = self
+    self.userTextField.delegate = self
+
     bgImageView.image = UIImage(named: "LoginBackgroundBeta")
     bgImageView.contentMode = .ScaleAspectFill
     
@@ -111,12 +113,15 @@ class LoginViewController: UIViewController {
     return .LightContent
   }
   
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        return true
+    }
   func textFieldShouldReturn(textField: UITextField) -> Bool {
-    textField.resignFirstResponder()
-    return true
+//    textField.resignFirstResponder()
+    self.view.endEditing(true)
+    return false
   }
-  
-  
+
   // ***************************
   // MARK: - Parse Login Methods
   // ***************************
