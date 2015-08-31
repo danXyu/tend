@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.cornerinnovations.$(PRODUCT_NAME:rfc1034identifier)</string>
+	<string>com.donnayu.$(PRODUCT_NAME:rfc1034identifier)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -23,14 +23,14 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb1025840570773020</string>
+				<string>fb128338524180663</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>1025840570773020</string>
+	<string>128338524180663</string>
 	<key>FacebookDisplayName</key>
 	<string>Tend</string>
 	<key>LSRequiresIPhoneOS</key>

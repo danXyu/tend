@@ -15,8 +15,8 @@ import FacebookSDK
 
 
 // Parse Settings
-var parseAppId = "BztXTqm8HNGsiwFoy1aF7uPc1DGmBvXm6uB8L14r"
-var parseAppSecret = "xezxP5xId6DcUWTHM9twdXgH4XXO6Kect45qBzeb"
+var parseAppId = "3OhrMPft38zZQhcsbGnQy0YpxTn8E4qbysXyyJQs"
+var parseAppSecret = "V8nGKFS3pfdPvn89OojDNaDN1T8l88N5jFLP7O7Y"
 
 // Device Settings
 let Device = UIDevice.currentDevice()
